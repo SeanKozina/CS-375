@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 
-<script src="../Common/initShaders.js"></script>
-<script src="../Common/helpers.js"></script>
-<script src="../Common/MV.js"></script>
+<script src="initShaders.js"></script>
+<script src="helpers.js"></script>
+<script src="MV.js"></script>
 <script src="Square.js"></script>
+<script src="main.js"></script>
 
 <script id="Square-vertex-shader" type="x-shader/x-vertex">
     in vec4 aPosition;
@@ -18,7 +19,7 @@
         //   modify an incoming vertex attribute.  They're read only.
         //
         vec4 p = aPosition;
-        p.xy -= 0.5;
+        p.xyz -= 0.5;
 
         vColor = aPosition;
 
@@ -34,41 +35,6 @@
         const vec4 magenta = vec4(1.0, 0.0, 1.0, 1.0);
         fColor = gl_FrontFacing ? vColor : magenta;
     }
-</script>
-
-<!-- The following "script" is basically what you'd put into main.js -->
-<script>
-    var canvas = undefined;
-    var gl = undefined;
-    var time = 0.0;
-
-    function init() {
-        canvas = document.getElementById("canvas");
-        gl = canvas.getContext("webgl2");
-
-        gl.clearColor(0.1, 0.1, 0.1, 1.0);
-        
-        square = new Square(gl);
-
-        square.P = mat4();
-        square.MV = mat4();
-
-        render();
-    }
-
-    function render() {
-        gl.clear(gl.COLOR_BUFFER_BIT);
-
-        time += 1.0;
-
-        square.MV = rotateZ(time);
-
-        square.render();
-
-        requestAnimationFrame(render);
-    }
-
-    window.onload = init;
 </script>
 
 <canvas id="canvas" width="512" height="512"></canvas>

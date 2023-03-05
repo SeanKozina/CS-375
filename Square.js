@@ -16,21 +16,37 @@ function Square(gl, vertexShader, fragmentShader) {
     //       into primitives
     //
     let positions = [
-        0.0, 0.0,  // Vertex 0
-        1.0, 0.0,  // Vertex 1
-        0.0, 1.0,  // Vertex 2
-        1.0, 1.0   // Vertex 3
+        0.0, 0.0, 0.0,  // Vertex 0
+        1.0, 0.0, 0.0, // Vertex 1
+        1.0, 1.0, 0.0, // Vertex 2
+        0.0, 1.0, 0.0, // Vertex 3
+
+        0.0, 0.0, 1.0,  // Vertex 4
+        1.0, 0.0, 1.0, // Vertex 5
+        1.0, 1.0, 1.0, // Vertex 6
+        0.0, 1.0, 1.0 // Vertex 7
     ];
 
     let indices = [
-        0, 1, 2,
-        1, 2, 3
+         4,6,7, //face 
+         4,5,6, //
+         5,2,6, // right
+         5,1,2, // 
+         1,3,2, //
+         1,0,3, // back
+         0,7,3, //left
+         0,4,7,
+         7,2,3, //top
+         7,6,2,
+         0,5,4, //bottom
+         0,1,5
+
     ];
 
     // Initialize all of our WebGL "plumbing" variables
     //
     let aPosition = new Attribute(gl, program, positions,
-	    "aPosition", 2, gl.FLOAT);
+	    "aPosition", 3, gl.FLOAT);
 
     indices = new Indices(gl, indices);
 
@@ -50,6 +66,5 @@ function Square(gl, vertexShader, fragmentShader) {
 
         indices.disable();
         aPosition.disable();
-    
     };
 };
