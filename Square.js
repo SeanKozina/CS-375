@@ -28,19 +28,18 @@ function Square(gl, vertexShader, fragmentShader) {
     ];
 
     let indices = [
+         0,5,4, //bottom
+         0,1,5
+         5,2,6, //right
+         5,1,2, 
          4,6,7, //face 
-         4,5,6, //
-         5,2,6, // right
-         5,1,2, // 
-         1,3,2, //
-         1,0,3, // back
+         4,5,6, 
+         1,3,2, //back
+         1,0,3,
          0,7,3, //left
          0,4,7,
          7,2,3, //top
          7,6,2,
-         0,5,4, //bottom
-         0,1,5
-
     ];
 
     // Initialize all of our WebGL "plumbing" variables
