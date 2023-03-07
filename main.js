@@ -26,9 +26,9 @@
 
         time += 1.0;
 
-        var V = translate(-1, 1, -5.0); 
+        var V = translate(-1, 0, -5.0); 
 
-        var P = perspective(90, aspectRatio, near, far);
+        var P = perspective(40, aspectRatio, near, far);
 
         square.MV = mult(mult(rotateX(time),rotateY(time)),rotateZ(time));
 

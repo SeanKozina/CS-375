@@ -29,8 +29,8 @@ function Square(gl, vertexShader, fragmentShader) {
 
     let indices = [
          0,5,4, //bottom
-         0,1,5
-         5,2,6, //right
+         0,1,5,
+         5,2,6,
          5,1,2, 
          4,6,7, //face 
          4,5,6, 
